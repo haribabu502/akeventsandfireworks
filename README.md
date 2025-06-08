@@ -1,1 +1,21 @@
 # akeventsandfireworks
+ Weddings| Receptions| Birthdays | Saree Functions| Corporate Events<br>
+Premium Entry Concepts | Fireworks | Visual FX | Full-Service Planning
+     Premium Entry Concepts | Fireworks | Visual FX | Full-Service Planning
+        </p>
+        <b><u>Entertainment</u></b>
+        <br>
+        <p>Stage Dancers</p>
+        <p>Anchors & Singers</p>
+        <p> DJ Sounds & Lighting</p><br>
+        <b><u>Event Types</u></b>
+        <br>
+        <p>Wedding & Reception</p>
+        <p>Birthday Parties</p>
+        <p> Corporate Events</p>
+        <p>Saree Function</p>
+        <p>Dothi Ceremony</p>
+        <footer>
+    <h2>Book Us for a Memorable Event!</h3>
+        <h3>Professional|punctual |Personlized</h3>
+        <a href="mailto:akeventsandfireworks@gmail.com">akeventsandfireworks@gmail.com</a>
