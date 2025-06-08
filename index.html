@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+    <title>AK Events and Fireworks</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+        }
+        header {
+            background-color: #ff6f61;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .auth-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .auth-buttons button {
+            margin-left: 10px;
+            padding: 8px 12px;
+            background-color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .auth-buttons button:hover {
+            background-color: #ffe1dc;
+        }
+        .slider, .gallery, footer {
+            display: flex;
+        }
+        
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .footer {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 30px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.footer-left a {
+  color: white;
+  text-decoration: none;
+  margin-right: 2px;
+}
+
+.footer-left a:hover {
+  text-decoration: underline;
+}
+
+.footer-right p {
+  margin: 2px 0;
+  text-align: right;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 70vh; /* or use 100vh for full screen */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+.slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* ensures the image fills the space */
+    flex-shrink: 0;
+}
+
+.dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #ff6f61;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AK Events and Fireworks</h1>
+        <p>akeventsandfireworks@gmail.com | <i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/p3rFAxS1y4SAtrQN6">Chittinagar</a></p>
+    </header><div class="slider" id="slider">
+  <div class="slides" id="slideContainer">
+    <img src="Birthday1.jpeg" alt="Birthday Event" />
+    <img src="Marriage1.jpeg" alt="Marriage Event" />
+    <img src="Marriage2.jpg" alt="Marriage Event" />
+    <img src="Birthday2.jpg" alt="Birthday Event" />
+  </div>
+  <div class="dots" id="dotsContainer"></div>
+</div>
+
+<section class="gallery" id="gallery">
+    <img src="gallery1.jpg" alt="Event">
+    <img src="gallery 2.jpg" alt="Event">
+    <img src="gallery 3.jpg" alt="Event">
+</section>
+
+<footer class="footer">
+  <div class="footer-left">
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="#">Terms</a>
+    <a href="#">Privacy</a>
+  </div>
+  <div class="footer-right">
+    <p>Office Address: AK Events HQ, Chittinagar</p>
+    <p>Landline: +91 96426 17098</p>
+  </div>
+</footer>
+<script>
+  const slides = document.querySelectorAll("#slideContainer img");
+  const dotsContainer = document.getElementById("dotsContainer");
+  let currentSlide = 0;
+  let slideInterval;
+
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    dot.addEventListener("click", () => {
+      showSlide(index);
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".dot");
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.display = i === index ? "block" : "none";
+      dots[i].classList.toggle("active", i === index);
+    });
+    currentSlide = index;
+  }
+
+  function autoSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  // Start auto slide
+  slideInterval = setInterval(autoSlide, 3000); // 3 seconds
+
+  // Show first slide initially
+  showSlide(currentSlide);
+</script>
+
+
+</body>
+</html>
